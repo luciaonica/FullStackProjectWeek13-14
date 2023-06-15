@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
+import { HomeNavbarComponent } from './components/home-navbar/home-navbar.component';
+import { DevPageComponent } from './components/dev-page/dev-page.component';
 
 const appRoutes: Routes = [
   {
@@ -28,7 +30,9 @@ const appRoutes: Routes = [
     AppComponent,
     HomePageComponent,
     CreateAccountComponent,
-    LoginComponent
+    LoginComponent,
+    HomeNavbarComponent,
+    DevPageComponent
   ],
   imports: [
     BrowserModule,

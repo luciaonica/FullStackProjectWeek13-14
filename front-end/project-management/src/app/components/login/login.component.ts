@@ -34,6 +34,17 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('currentUser', this.user.username);
     this.accountService.loginCheck(this.user).subscribe((user) => {
       this.user = user;
+      if(this.user.enabled == false) {
+        alert("Account not enabled or details are wrong, please try again.")
+      } else {
+        this.user.roles.forEach((role: Role) => {
+          if(role.name === 'ROLE_DEVELOPER'){
+            
+          } else {
+            
+          }
+        })
+      }
     })
   }
 }
