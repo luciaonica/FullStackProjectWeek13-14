@@ -1,7 +1,6 @@
 package com.genspark.clientprojectmanagement;
 
 import com.genspark.clientprojectmanagement.DAO.RoleDao;
-import com.genspark.clientprojectmanagement.DAO.RoleDaoImpl;
 import com.genspark.clientprojectmanagement.DAO.UserDao;
 import com.genspark.clientprojectmanagement.entity.Role;
 import com.genspark.clientprojectmanagement.entity.User;
@@ -11,16 +10,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.swing.text.html.parser.Entity;
-
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class ClientProjectManagementApplicationTests {
+class UserAndRolesTests{
 
 	@Autowired
 	private UserDao userDao;
