@@ -3,3 +3,39 @@
     <p>dev-page works!</p>
 </div>
 
+<h1>clients</h1>
+
+<div *ngIf="clients.length==0">No clients o display</div>
+<div class="row">
+    <div class="row m-1">
+		<div class="col-sm-4 mt-2" *ngFor="let client of clients">
+            <div class="card">
+            <div class="card-header ">
+                <div class="row">
+                    <div class="col">
+                        <a href=""><b>{{client.name}}</b></a>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex justify-content-end">
+                            <b><a href="">update client</a></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                Registration Date
+                <p>{{client.registerDate | date: 'yyyy-MM-dd'}}</p>
+                No. of projects
+                <p>no. of project</p>
+                
+            </div>
+            <div class="card-footer">
+                <button (click)="addProject()">Add Project</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+

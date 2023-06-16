@@ -12,7 +12,7 @@ export class ProjectsDisplayComponent implements OnInit{
   clientName = "";
   clientId:number=0;
   //username = "kjk";
-  username = "lucia";
+  username = localStorage.getItem('currentUser');
   projects: Project[] = []; 
 
   constructor(private clientService: ClientService, private projectService: ProjectService){}
@@ -27,8 +27,8 @@ export class ProjectsDisplayComponent implements OnInit{
       this.clientId = client.clientId;
       this.clientName = client.name;
       console.log(client);
-      localStorage.removeItem('clientId');
-      localStorage.setItem('clientId', this.clientId.toString())
+      //localStorage.removeItem('clientId');
+      //localStorage.setItem('clientId', this.clientId.toString())
       this.projectService.projectList(this.clientId).subscribe((projects) => this.projects = projects);    
     });
         

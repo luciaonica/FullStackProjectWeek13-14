@@ -11,7 +11,7 @@ export class ClientService {
   private apiUrl = 'http://localhost:8081'
   clientName = "";
   clientId:number=0;
-  username = localStorage.getItem('currentUser')
+  username = localStorage.getItem('currentUser');
   projects: Project[] = [];
 
   constructor(private http: HttpClient) { }  
@@ -35,5 +35,9 @@ export class ClientService {
 
   updateUsername(){
     this.username = localStorage.getItem('currentUser');
+
+  }
+  clientList(){
+    return this.http.get<Client[]>(`${this.apiUrl}/admin/clients`);
   }
 }

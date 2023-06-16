@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Project } from 'src/app/entities/Project';
+import { ClientService } from 'src/app/services/client.service';
 import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
@@ -10,28 +11,36 @@ import { ProjectService } from 'src/app/services/project.service';
 export class ProjectsAddDisplayComponent {
   projectId:number|undefined;
   name!: string;
-  clientId = parseInt(localStorage.getItem('clientId') || '0', 10);
+  clientId:number=0;
+  username = localStorage.getItem('currentUser');
 
-  constructor(private projectService: ProjectService){}
+  constructor(private projectService: ProjectService, private clientService: ClientService){}
 
   onSubmit(){
     if(!this.name){
       alert('Please add a username!');
       return;
     } 
-    const newProject : Project = {
-      name: this.name,
-      startDate: new Date(),
-      endDate: new Date(),
-      status: "NEW",
-      client: {'clientId': this.clientId,'name': "", address:"",email:"",username:"",agreement:"", registerDate:new Date()}
-    }
 
-    console.log(newProject);
+    this.clientService.getClientByUsername().subscribe((client: any) => {
+      this.clientId = client.clientId;
+      const newProject : Project = {
+        name: this.name,
+        startDate: new Date(),
+        endDate: new Date(),
+        status: "NEW",
+        client: {'clientId': this.clientId,'name': "", address:"",email:"",username:"",agreement:"", registerDate:new Date()}
+      }
+      console.log(newProject);
 
-    this.projectService.addProject(newProject).subscribe((result) =>{
-      console.log(result);
+      this.projectService.addProject(newProject).subscribe((result) =>{
+        console.log(result);
+      });
     });
+
+    
+
+    
   }
 
 
