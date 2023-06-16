@@ -1,0 +1,29 @@
+.card {
+    border: 1px solid #3d3535;
+   
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.card-header {
+    background-color: #e2d7d7;
+    padding: 10px;
+}
+
+.card-body {
+    padding: 10px;
+    background-color: #a39e9e;
+}
+
+.card-footer {
+    padding: 10px;
+    background-color: #483a3a;
+}
+
+h1{
+    text-align: center;
+}
+
+.links{
+    margin-left: 50px;
+}

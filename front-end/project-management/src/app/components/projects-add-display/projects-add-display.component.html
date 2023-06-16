@@ -2,3 +2,21 @@
 <div class="container">
     <p>project add display work</p>
 </div>
+
+
+<div class="container">
+    <div>Add Project</div>
+    <div class="d-flex flex-column justify-content-between create-account-flex">
+      <form (ngSubmit)="onSubmit()">
+          <div class="d-flex flex-column justify-content-between user-info-flex">
+              <div class="form-group mb-2 form-div">
+                  <label for="name">Name</label>
+                  <input type="text" name="name" [(ngModel)]="name" id="name" class="form-control"   placeholder="Enter project name"/>
+                </div>
+             
+                <input type="submit" value="Create project" class="btn btn-primary"/>
+          </div>
+  
+        </form>
+    </div>
+  </div>
