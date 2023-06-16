@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
-
+  goToGithub(){
+    window.open('https://github.com/luciaonica/FullStackProjectWeek13-14/tree/master', "_blank");
+  }
 }

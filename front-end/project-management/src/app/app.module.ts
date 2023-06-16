@@ -19,10 +19,14 @@ import { ProjectsDisplayComponent } from './components/projects-display/projects
 import { ProjectsAddDisplayComponent } from './components/projects-add-display/projects-add-display.component';
 import { UpdateDisplayComponent } from './components/update-display/update-display.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LicensingComponent } from './components/licensing/licensing.component';
 
 const appRoutes: Routes = [
   {
     path: '', component: HomePageComponent
+  },
+  {
+    path: 'licensing', component: LicensingComponent
   },
   {
     path: 'create-account', component: CreateAccountComponent
@@ -31,7 +35,7 @@ const appRoutes: Routes = [
     path: 'login', component: LoginComponent
   },
   {
-    path: 'update', component: UpdateDisplayComponent,
+    path: 'create-client', component: UpdateDisplayComponent,
     canActivate: [ClientGuard]
   },
   {
@@ -58,6 +62,7 @@ const appRoutes: Routes = [
     HomePageComponent,
     CreateAccountComponent,
     LoginComponent,
+    LicensingComponent,
     HomeNavbarComponent,
     ManagementNavBarComponent,
     DevPageComponent,
@@ -65,7 +70,8 @@ const appRoutes: Routes = [
     ProjectsAddDisplayComponent,
     ProjectsDisplayComponent,
     UpdateDisplayComponent,
-    FooterComponent
+    FooterComponent,
+    LicensingComponent
   ],
   imports: [
     BrowserModule,
