@@ -11,7 +11,7 @@ export class ClientService {
   private apiUrl = 'http://localhost:8081'
   clientName = "";
   clientId:number=0;
-  username = "lucia"; 
+  username = localStorage.getItem('currentUser');
   projects: Project[] = [];
 
   constructor(private http: HttpClient) { }  
@@ -31,5 +31,9 @@ export class ClientService {
     return this.http.post(`http://localhost:8081/admin/clients/upload/${clientId}`, formData, {
       responseType: 'text'
     });
+  }
+
+  clientList(){
+    return this.http.get<Client[]>(`${this.apiUrl}/admin/clients`);
   }
 }
