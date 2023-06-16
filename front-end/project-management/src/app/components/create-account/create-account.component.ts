@@ -9,19 +9,28 @@ import { User } from 'src/app/entities/User';
 export class CreateAccountComponent implements OnInit {
   username!: string;
   password!: string;
+  confirmPassword!: string;
   userCreated!: User;
   constructor(private accountService: AccountService){}
 
   ngOnInit(): void{
-    //TODO: change authentication flags if needed
   }
 
   onSubmit(){
+    if(this.password !== this.confirmPassword){
+      alert("Passwords do not match. Please try again.")
+      return;
+    }
     if(!this.username){
       alert('Please add a username!');
       return;
-    } if (!this.password){
+    } 
+    if (!this.password){
       alert('Please add a password!');
+      return;
+    }
+    if (!this.confirmPassword){
+      alert('Please add a confirmation password!');
       return;
     }
     const newUser : User = {

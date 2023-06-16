@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+//got some help from https://medium.com/@ryanchenkie_40935/angular-authentication-using-route-guards-bf7a4ca13ae3
 @Injectable({
   providedIn: 'root'
 })

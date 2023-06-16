@@ -9,5 +9,6 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.setItem('currentUser', '');
+    
   }
 }
