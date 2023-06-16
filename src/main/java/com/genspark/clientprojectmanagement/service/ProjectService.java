@@ -18,4 +18,5 @@ public interface ProjectService {
     List<Project> getAllProjects();
 
     Project getProjectById(int i);
+    void updateProjectStatus(Integer id, ProjectStatus status);
 }
