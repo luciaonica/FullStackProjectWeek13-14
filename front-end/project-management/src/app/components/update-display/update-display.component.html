@@ -1,9 +1,7 @@
 <app-management-nav-bar></app-management-nav-bar>
 <div class="container">
-    <p>update-display works!</p>
-</div>
-<div>Update Account</div>
-<form (submit)="registerClient()" enctype="multipart/form-data">
+    <div>Update Account</div>
+    <form (submit)="registerClient()" enctype="multipart/form-data">
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name" required>
@@ -22,3 +20,5 @@
     </div>
     <button type="submit" class="btn btn-primary">Update</button>
   </form>
+
+</div>

@@ -18,6 +18,7 @@ import { DashboardHomeComponent } from './components/dashboard-home/dashboard-ho
 import { ProjectsDisplayComponent } from './components/projects-display/projects-display.component';
 import { ProjectsAddDisplayComponent } from './components/projects-add-display/projects-add-display.component';
 import { UpdateDisplayComponent } from './components/update-display/update-display.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const appRoutes: Routes = [
   {
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
     DashboardHomeComponent,
     ProjectsAddDisplayComponent,
     ProjectsDisplayComponent,
-    UpdateDisplayComponent
+    UpdateDisplayComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

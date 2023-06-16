@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
-    localStorage.setItem('currentUser', '');
-    
+    localStorage.clear();
   }
 }

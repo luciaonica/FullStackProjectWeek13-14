@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
   selector: 'app-management-nav-bar',
@@ -9,7 +10,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ManagementNavBarComponent {
 
-  constructor(private authenticationService: AuthService, private router: Router){}
+  constructor(private authenticationService: AuthService,
+              private router: Router,
+              private clientService: ClientService){}
 
   logout(){
     this.authenticationService.deauthenticateClient();
@@ -22,5 +25,12 @@ export class ManagementNavBarComponent {
   }
   showDevTab(): boolean {
     return this.authenticationService.isAuthenticatedDev();
+  }
+
+  clientRegistered(): boolean{
+    let clientId = parseInt(localStorage.getItem('clientId') || '0', 10);
+    console.log(clientId);
+    return false;
+  
   }
 }

@@ -27,6 +27,11 @@ export class ProjectService {
   }
 
   addProject(newProject:Project){
+    newProject.client
     return this.http.post(`${this.apiUrl}/admin/projects`, newProject);    
+  }
+
+  updateClientIdLocal(){
+    this.clientId = parseInt(localStorage.getItem('clientId') || '0', 10);
   }
 }

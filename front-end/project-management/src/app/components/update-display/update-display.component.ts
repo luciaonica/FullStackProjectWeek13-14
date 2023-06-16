@@ -35,6 +35,7 @@ export class UpdateDisplayComponent {
     }
 
     this.clientService.registerClient(newClient).subscribe((client: any) => {
+      localStorage.setItem('clientId', client.clientId);
       console.log(client.clientId);
       this.uploadPdf(client.clientId);
     })

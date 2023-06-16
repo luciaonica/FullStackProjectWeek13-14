@@ -80,4 +80,9 @@ public class ClientController {
     public List<Project> getProjectsByClientId(@PathVariable int clientId) {
         return projectService.getProjectsByClientId(clientId);
     }
+
+    @GetMapping("/clients/client_by_username/{username}")
+    public Client getClientByUsername(@PathVariable String username) {
+        return clientService.getClientByUsername(username);
+    }
 }
