@@ -17,7 +17,7 @@ export class ProjectService {
   }
 
   updateCompleted(projectId:number){
-    console.log(projectId);
+    alert(projectId);
     return this.http.get(`${this.apiUrl}/admin/projects/${projectId}/update_status/COMPLETED`, { responseType: 'text' });
   }
 
@@ -33,5 +33,13 @@ export class ProjectService {
 
   updateClientIdLocal(){
     this.clientId = parseInt(localStorage.getItem('clientId') || '0', 10);
+  }
+
+  getProject(id:string) {
+    return this.http.get<Project>(`${this.apiUrl}/admin/projects/${id}`);
+  }
+
+  updateProject(project: Project) {
+    return this.http.put(`${this.apiUrl}/admin/projects`, project);
   }
 }

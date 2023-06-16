@@ -1,0 +1,19 @@
+<app-management-nav-bar></app-management-nav-bar>
+<div class="container">
+    <div class="container">
+        <div>Add Project</div>
+        <div class="d-flex flex-column justify-content-between create-account-flex">
+          <form #updateProject="ngForm" (ngSubmit)="onSubmit(updateProject.value)">
+              <div class="d-flex flex-column justify-content-between user-info-flex">
+                  <div class="form-group mb-2 form-div">
+                      <label for="name">Name</label>
+                      <input type="text" name="name" ngModel="{{projectData?.name}}" id="name" class="form-control"   placeholder="Enter project name"/>
+                    </div>
+                 
+                    <input type="submit" value="Update project" class="btn btn-primary"/>
+              </div>
+      
+            </form>
+        </div>
+      </div>
+</div>

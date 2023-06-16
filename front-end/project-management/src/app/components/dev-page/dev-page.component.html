@@ -30,7 +30,7 @@
                 
             </div>
             <div class="card-footer">
-                <button (click)="addProject()">Add Project</button>
+                <button (click)="client.clientId !== undefined ? addProjectAsDev(client.clientId) : null">Add Project</button>
                 </div>
             </div>
         </div>

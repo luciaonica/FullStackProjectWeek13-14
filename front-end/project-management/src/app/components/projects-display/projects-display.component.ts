@@ -36,7 +36,7 @@ export class ProjectsDisplayComponent implements OnInit{
 
   //updating project status to completed
   updateCompleted(projectId:number){
-    console.log(projectId);
+    alert(projectId);
     this.projectService.updateCompleted(projectId).subscribe((response) =>{
       console.log(response);
     });    

@@ -55,9 +55,15 @@ export class LoginComponent implements OnInit {
           this.authenticationService.authenticateClient();
           this.clientService.updateUsername();
           this.clientService.getClientByUsername().subscribe((client) => {
-            localStorage.setItem('clientId', '' + client.clientId)
-            this.projectService.updateClientIdLocal();
-            this.router.navigate(['/dashboard']);
+            if(client == null){
+              localStorage.setItem('clientId', '0');
+              this.projectService.updateClientIdLocal();
+              this.router.navigate(['/dashboard']);
+            } else {
+              localStorage.setItem('clientId', '' + client.clientId);
+              this.projectService.updateClientIdLocal();
+              this.router.navigate(['/dashboard']);
+            }
           })
         } else {
           this.clientService.updateUsername();
@@ -67,15 +73,14 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('clientId', '0');
               this.projectService.updateClientIdLocal();
               this.router.navigate(['/dashboard']);
-            } else
+            } else {
               localStorage.setItem('clientId', '' + client.clientId);
               this.projectService.updateClientIdLocal();
               this.router.navigate(['/dashboard']);
+            }
           }
           )
-        }
-        
-        
+        }       
       }
     })
   }
