@@ -33,7 +33,7 @@ export class UpdateDisplayComponent {
       registerDate: new Date(),      
       agreement:"",
       email: this.email,
-      username:localStorage.getItem('currentUser') as string,
+      username: localStorage.getItem('currentUser') as string,
     }
 
     this.clientService.registerClient(newClient).subscribe((client: any) => {

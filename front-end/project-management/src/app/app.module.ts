@@ -19,11 +19,15 @@ import { ProjectsDisplayComponent } from './components/projects-display/projects
 import { ProjectsAddDisplayComponent } from './components/projects-add-display/projects-add-display.component';
 import { UpdateDisplayComponent } from './components/update-display/update-display.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LicensingComponent } from './components/licensing/licensing.component';
 import { UpdateProjectComponent } from './components/update-project/update-project.component';
 
 const appRoutes: Routes = [
   {
     path: '', component: HomePageComponent
+  },
+  {
+    path: 'licensing', component: LicensingComponent
   },
   {
     path: 'create-account', component: CreateAccountComponent
@@ -67,6 +71,7 @@ const appRoutes: Routes = [
     HomePageComponent,
     CreateAccountComponent,
     LoginComponent,
+    LicensingComponent,
     HomeNavbarComponent,
     ManagementNavBarComponent,
     DevPageComponent,
@@ -75,6 +80,7 @@ const appRoutes: Routes = [
     ProjectsDisplayComponent,
     UpdateDisplayComponent,
     FooterComponent,
+    LicensingComponent,
     UpdateProjectComponent
   ],
   imports: [
