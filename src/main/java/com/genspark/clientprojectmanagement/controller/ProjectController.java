@@ -49,6 +49,7 @@ public class ProjectController {
     @GetMapping("/projects/{projectId}/update_status/{status}")
     public String updateProjectStatus(@PathVariable(name="projectId") String projectId, @PathVariable(name="status") ProjectStatus status) {
         projectService.updateProjectStatus(Integer.parseInt(projectId), status);
+        //send email
         return "Status updated";
     }
 
