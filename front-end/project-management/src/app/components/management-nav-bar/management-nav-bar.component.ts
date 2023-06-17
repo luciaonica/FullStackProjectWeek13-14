@@ -29,8 +29,11 @@ export class ManagementNavBarComponent {
 
   clientRegistered(): boolean{
     let clientId = parseInt(localStorage.getItem('clientId') || '0', 10);
-    console.log(clientId);
-    return false;
+    if(clientId == 0){
+      return false;
+    } else {
+      return true;
+    }
   
   }
 }

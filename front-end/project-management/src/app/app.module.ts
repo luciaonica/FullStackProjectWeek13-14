@@ -32,7 +32,7 @@ const appRoutes: Routes = [
     path: 'login', component: LoginComponent
   },
   {
-    path: 'update', component: UpdateDisplayComponent,
+    path: 'create-client', component: UpdateDisplayComponent,
     canActivate: [ClientGuard]
   },
   {

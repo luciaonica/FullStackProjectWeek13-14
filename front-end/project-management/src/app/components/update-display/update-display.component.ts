@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Client } from 'src/app/entities/Client';
 import { ClientService } from 'src/app/services/client.service';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-update-display',
@@ -13,12 +14,13 @@ export class UpdateDisplayComponent {
   name!: string;
   address!: string;
   email!: string;
-  username = "lucia";
+  username = localStorage.getItem('currentUser')??'';
   
   
   fileToUpload: File | null = null;
 
-  constructor(private http: HttpClient, private clientService: ClientService) { }
+  constructor(private http: HttpClient, private clientService: ClientService,
+              private projectService: ProjectService) { }
 
   registerClient(){
     if(!this.name){
@@ -31,12 +33,12 @@ export class UpdateDisplayComponent {
       registerDate: new Date(),      
       agreement:"",
       email: this.email,
-      username:this.username,
+      username:localStorage.getItem('currentUser') as string,
     }
 
     this.clientService.registerClient(newClient).subscribe((client: any) => {
       localStorage.setItem('clientId', client.clientId);
-      console.log(client.clientId);
+      this.projectService.updateClientIdLocal();
       this.uploadPdf(client.clientId);
     })
 

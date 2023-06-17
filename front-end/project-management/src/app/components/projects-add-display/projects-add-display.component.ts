@@ -14,7 +14,7 @@ export class ProjectsAddDisplayComponent implements OnInit {
   name!: string;
   clientId: number = 0;
   clientIdFromURL: number | undefined;
-  username = localStorage.getItem('currentUser');
+  //username = localStorage.getItem('currentUser');
 
   constructor(private projectService: ProjectService,
     private clientService: ClientService,
