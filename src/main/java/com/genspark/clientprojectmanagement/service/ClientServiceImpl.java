@@ -58,4 +58,9 @@ public class ClientServiceImpl implements ClientService{
         Client client = clientRepository.findByUsername(username);
         return client;
     }
+
+    @Override
+    public void updateNumberOfProjects() {
+        clientRepository.updateNumberOfProjects();
+    }
 }

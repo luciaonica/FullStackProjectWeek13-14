@@ -17,7 +17,7 @@ export class ProjectService {
   }
 
   updateCompleted(projectId:number){
-    alert(projectId);
+    //alert(projectId);
     return this.http.get(`${this.apiUrl}/admin/projects/${projectId}/update_status/COMPLETED`, { responseType: 'text' });
   }
 

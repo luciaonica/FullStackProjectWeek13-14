@@ -16,4 +16,6 @@ public interface ClientService {
     List<Client> getAllClients();
 
     Client getClientByUsername(String username);
+
+    void updateNumberOfProjects();
 }

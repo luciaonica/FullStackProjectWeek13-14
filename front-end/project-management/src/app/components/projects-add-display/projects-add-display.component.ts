@@ -24,7 +24,7 @@ export class ProjectsAddDisplayComponent implements OnInit {
     this.route.queryParamMap.subscribe(params => {
       const clientIdParam = params.get('clientId');
       this.clientIdFromURL = clientIdParam ? parseInt(clientIdParam, 10) : undefined;
-      alert(this.clientIdFromURL);
+      //alert(this.clientIdFromURL);
     });
   }
 
@@ -34,13 +34,13 @@ export class ProjectsAddDisplayComponent implements OnInit {
       return;
     }
     if (this.clientIdFromURL) {
-      alert(this.clientIdFromURL);
+      //alert(this.clientIdFromURL);
       const newProject: Project = {
         name: this.name,
         startDate: new Date(),
         endDate: new Date(),
         status: "NEW",
-        client: { 'clientId': this.clientIdFromURL, 'name': "", address: "", email: "", username: "", agreement: "", registerDate: new Date() }
+        client: { 'clientId': this.clientIdFromURL, 'name': "", address: "", email: "", username: "", agreement: "", registerDate: new Date(), numberOfProjects: 0 }
       }
 
       this.projectService.addProject(newProject).subscribe((result) => {
@@ -55,7 +55,7 @@ export class ProjectsAddDisplayComponent implements OnInit {
           startDate: new Date(),
           endDate: new Date(),
           status: "NEW",
-          client: { 'clientId': this.clientId, 'name': "", address: "", email: "", username: "", agreement: "", registerDate: new Date() }
+          client: { 'clientId': this.clientId, 'name': "", address: "", email: "", username: "", agreement: "", registerDate: new Date(), numberOfProjects:0 }
         }
         console.log(newProject);
 
