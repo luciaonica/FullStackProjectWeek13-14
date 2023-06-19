@@ -22,6 +22,9 @@
                     <li *ngIf="clientRegistered()"class="nav-item">
                       <a class="nav-link" routerLink="/update">Update Client Info</a>
                     </li>
+                    <li>
+                      <a class="nav-link" routerLink="/account/update">Update Account Info</a>
+                    </li>
                 </ul>
               </div>
         </div>
@@ -36,7 +39,9 @@
             </li>
         </ul>
       </div>
-      <button type="button" class="btn btn-danger btn-sm" (click)="clientRegistered()">test</button>
     </div>
  </nav>
+ <div *ngIf="!clientRegistered()" class="container-fluid w-100 text-center" style="background-color: rgb(245, 77, 77);min-height: 30px;">
+  <h1>Please add your information in the add client tab to begin using the app</h1>
+ </div>
 

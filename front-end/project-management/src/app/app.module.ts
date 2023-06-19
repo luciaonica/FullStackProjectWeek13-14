@@ -22,6 +22,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LicensingComponent } from './components/licensing/licensing.component';
 import { UpdateProjectComponent } from './components/update-project/update-project.component';
 import { ViewClientInfoComponent } from './components/view-client-info/view-client-info.component';
+import { UpdateAccountComponent } from './components/update-account/update-account.component';
 
 const appRoutes: Routes = [
   {
@@ -68,6 +69,10 @@ const appRoutes: Routes = [
     path: 'clients/view/:id', component: ViewClientInfoComponent,
     canActivate: [ClientGuard]
   },
+  {
+    path: 'account/update', component: UpdateAccountComponent,
+    canActivate: [ClientGuard]
+  }
 ]
 
 @NgModule({
@@ -87,7 +92,8 @@ const appRoutes: Routes = [
     FooterComponent,
     LicensingComponent,
     UpdateProjectComponent,
-    ViewClientInfoComponent
+    ViewClientInfoComponent,
+    UpdateAccountComponent
   ],
   imports: [
     BrowserModule,

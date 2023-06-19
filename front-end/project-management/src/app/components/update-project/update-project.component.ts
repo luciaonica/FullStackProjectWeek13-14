@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Project } from 'src/app/entities/Project';
 import { ProjectService } from 'src/app/services/project.service';
 
@@ -11,7 +11,7 @@ import { ProjectService } from 'src/app/services/project.service';
 export class UpdateProjectComponent implements OnInit{
   projectData: undefined | Project;
 
-  constructor(private route: ActivatedRoute, private projectService: ProjectService){}
+  constructor(private route: ActivatedRoute, private projectService: ProjectService, private router: Router){}
 
   ngOnInit(): void {
     let projectId = this.route.snapshot.paramMap.get('id');
@@ -32,6 +32,8 @@ export class UpdateProjectComponent implements OnInit{
     this.projectService.updateProject(data).subscribe((result) =>{
       if (result) {
         console.log(result);
+        alert('Updated project succesfully.');
+        this.router.navigate(['projects']);
       }
     })
   }

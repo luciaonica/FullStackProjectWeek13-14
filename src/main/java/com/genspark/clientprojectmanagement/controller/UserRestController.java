@@ -83,4 +83,14 @@ public class UserRestController {
         List<User> rv = userInfoService.deleteByUsername(username);
         return rv;
     }
+
+    // PUT /users/{username} for updating password
+    @PutMapping("/users/{username}")
+    public User updatePassword(@PathVariable String username, @RequestBody User user){
+        User dbUser = userInfoService.findByUserName(user.getUsername());
+        if (dbUser.getUsername() == null) {
+            return new User();
+        }
+        return userInfoService.updatePassword(user);
+    }
 }
