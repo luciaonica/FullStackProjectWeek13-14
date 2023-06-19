@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Project } from 'src/app/entities/Project';
 import { ClientService } from 'src/app/services/client.service';
 import { ProjectService } from 'src/app/services/project.service';
@@ -18,7 +18,8 @@ export class ProjectsAddDisplayComponent implements OnInit {
 
   constructor(private projectService: ProjectService,
     private clientService: ClientService,
-    private route: ActivatedRoute,) { }
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe(params => {
@@ -61,6 +62,8 @@ export class ProjectsAddDisplayComponent implements OnInit {
 
         this.projectService.addProject(newProject).subscribe((result) => {
           console.log(result);
+          alert('Project added: ' + result);
+          this.router.navigate(['projects']);
         });
       });
 
