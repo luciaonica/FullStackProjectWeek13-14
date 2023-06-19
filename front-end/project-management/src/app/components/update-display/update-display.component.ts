@@ -14,7 +14,7 @@ export class UpdateDisplayComponent {
   name!: string;
   address!: string;
   email!: string;
-  username = "lucia";
+  username = localStorage.getItem('currentUser')??'';
   
   
   fileToUpload: File | null = null;

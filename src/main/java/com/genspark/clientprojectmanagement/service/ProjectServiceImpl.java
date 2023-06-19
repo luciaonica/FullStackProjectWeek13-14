@@ -9,6 +9,7 @@ import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,5 +59,15 @@ public class ProjectServiceImpl implements ProjectService{
             throw new RuntimeException("Project ID " + id + " not found");
         }
         return project;
+    }
+
+    @Override
+    public void updateProjectStatus(Integer id, ProjectStatus status) {
+        Project project = projectRepository.findById(id).get();
+        project.setStatus(status);
+        if (status.equals(ProjectStatus.CANCELLED) || status.equals(ProjectStatus.COMPLETED)) {
+            project.setEndDate(new Date());
+        }
+        projectRepository.save(project);
     }
 }

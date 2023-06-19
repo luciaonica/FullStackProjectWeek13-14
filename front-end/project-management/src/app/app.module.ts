@@ -20,6 +20,7 @@ import { ProjectsAddDisplayComponent } from './components/projects-add-display/p
 import { UpdateDisplayComponent } from './components/update-display/update-display.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LicensingComponent } from './components/licensing/licensing.component';
+import { UpdateProjectComponent } from './components/update-project/update-project.component';
 
 const appRoutes: Routes = [
   {
@@ -53,7 +54,15 @@ const appRoutes: Routes = [
   {
     path:'dev', component:DevPageComponent,
     canActivate: [DevGuard]
-  }
+  },
+  {
+    path: 'projects/add/:clientId', component: ProjectsAddDisplayComponent,
+    canActivate: [ClientGuard]
+  },
+  {
+    path: 'projects/update/:id', component: UpdateProjectComponent,
+    canActivate: [ClientGuard]
+  },
 ]
 
 @NgModule({
@@ -71,7 +80,8 @@ const appRoutes: Routes = [
     ProjectsDisplayComponent,
     UpdateDisplayComponent,
     FooterComponent,
-    LicensingComponent
+    LicensingComponent,
+    UpdateProjectComponent
   ],
   imports: [
     BrowserModule,

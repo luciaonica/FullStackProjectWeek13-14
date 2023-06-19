@@ -36,11 +36,11 @@ public class ClientController {
         return clientService.updateClient(client);
     }
 
-    @PostMapping("clients/upload")
-    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
-        int clientId = 1;
+    @PostMapping("clients/upload/{clientId}")
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file, @PathVariable String clientId) throws IOException {
+        //int clientId = 1;
 
-        Client client = clientService.getClientById(clientId);
+        Client client = clientService.getClientById(Integer.parseInt(clientId));
 
         if (file.isEmpty()) {
             return ResponseEntity.badRequest().body("File is empty");
