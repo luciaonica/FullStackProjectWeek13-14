@@ -80,11 +80,7 @@ export class LoginComponent implements OnInit {
             }
           }
           )
-<<<<<<< HEAD
         } 
-=======
-        }       
->>>>>>> lucia-branch
       }
     })
   }
