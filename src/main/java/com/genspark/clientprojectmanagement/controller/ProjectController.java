@@ -66,15 +66,18 @@ public class ProjectController {
     @GetMapping("/projects/{projectId}/update_status/{status}")
     public String updateProjectStatus(@PathVariable(name="projectId") String projectId, @PathVariable(name="status") ProjectStatus status,
                                       HttpServletRequest request) throws MessagingException, UnsupportedEncodingException {
-        projectService.updateProjectStatus(Integer.parseInt(projectId), status);
-        sendEmail(request, 18, status.toString(), Integer.parseInt(projectId));
+        Integer projId = Integer.parseInt(projectId);
+        projectService.updateProjectStatus(projId, status);
+        Project project = projectService.getProjectById(projId);
+        Integer clientId = project.getClient().getClientId();
+        sendEmail(request, clientId, status.toString(), Integer.parseInt(projectId));
         return "Status updated";
     }
 
-    public String sendEmail(HttpServletRequest request, @PathVariable(name="clientId") Integer id,
+    public String sendEmail(HttpServletRequest request, Integer clientId,
                             @PathVariable(name="status") String status, Integer projectId)
             throws MessagingException, UnsupportedEncodingException {
-        Client client = clientService.getClientById(id);
+        Client client = clientService.getClientById(clientId);
 
         JavaMailSenderImpl mailSender = MailSenderUtility.prepareMailSender();
 
@@ -85,7 +88,7 @@ public class ProjectController {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
-        //helper.setFrom("tatiana56guzun@gmail.com", "Dev Team");
+        helper.setFrom("tatiana56guzun@gmail.com", "Dev Team");
         helper.setTo(toAddress);
         helper.setSubject(subject);
         helper.setText(content);
