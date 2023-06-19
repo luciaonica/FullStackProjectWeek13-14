@@ -70,7 +70,7 @@ public class ProjectController {
         projectService.updateProjectStatus(projId, status);
         Project project = projectService.getProjectById(projId);
         Integer clientId = project.getClient().getClientId();
-        sendEmail(request, clientId, status.toString(), Integer.parseInt(projectId));
+        //sendEmail(request, clientId, status.toString(), Integer.parseInt(projectId));
         return "Status updated";
     }
 
