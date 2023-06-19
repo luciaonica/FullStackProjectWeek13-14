@@ -1,0 +1,43 @@
+<app-management-nav-bar></app-management-nav-bar>
+<div class="container">
+    <h1>Client Info</h1>
+    <h2>Client ID: {{clientId}}</h2>
+    <h2>Client Name: "{{client?.name}}"</h2>
+    <h2>Client Address: "{{client?.address}}"</h2>
+    <h2>Client Email: "{{client?.email}}"</h2>
+    <h2>Client Registration Date: "{{client?.registerDate | date: 'yyyy-MM-dd'}}"</h2>
+    <div *ngIf="projects.length==0">No projects to display</div>
+    <div class="row">
+        <div class="row m-1">
+            <div class="col-sm-4 mt-2" *ngFor="let project of projects">
+                <div class="card">
+                <div class="card-header ">
+                    <div class="row">
+                        <div class="col">
+                            <b>{{project.name}}</b>
+                        </div>
+                        <div class="col">
+                            <div class="d-flex justify-content-end">
+                                <b><a routerLink="/projects/update/{{project.projectId}}">update project</a></b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    Start Date
+                    <p>{{project.startDate | date: 'yyyy-MM-dd'}}</p>
+                    Status
+                    <p>{{project.status}}</p>
+                    End Date
+                    <p>{{project.endDate | date: 'yyyy-MM-dd'}}</p>
+                </div>
+                <div class="card-footer">
+                    <button (click)="project.projectId !== undefined ? updateCompleted(project.projectId) : null">COMPLETE</button>
+                    <button (click)="project.projectId !== undefined ? updateCancelled(project.projectId) : null">CANCEL</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

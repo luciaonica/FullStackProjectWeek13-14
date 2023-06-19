@@ -37,7 +37,14 @@ export class ClientService {
     this.username = localStorage.getItem('currentUser');
 
   }
+
   clientList(){
     return this.http.get<Client[]>(`${this.apiUrl}/admin/clients`);
   }
+
+  getClientById(id:number) {
+    return this.http.get<Client>(`${this.apiUrl}/admin/clients/${id}`);
+  }
+  
+
 }

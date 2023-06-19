@@ -31,16 +31,20 @@ public class Client {
 
     private Date registerDate;
 
+    @Column(nullable = false)
+    private int numberOfProjects=0;
+
     public Client() {
     }
 
-    public Client(String name, String address, String email, String username, String agreement, Date registerDate) {
+    public Client(String name, String address, String email, String username, String agreement, Date registerDate, int numberOfProjects) {
         this.name = name;
         this.address = address;
         this.email = email;
         this.username = username;
         this.agreement = agreement;
         this.registerDate = registerDate;
+        this.numberOfProjects = numberOfProjects;
     }
 
     public int getClientId() {
@@ -97,5 +101,14 @@ public class Client {
 
     public void setRegisterDate(Date registerDate) {
         this.registerDate = registerDate;
+    }
+
+    public int getNumberOfProjects() {
+        return numberOfProjects;
+    }
+
+    public void setNumberOfProjects(int numberOfProjects) {
+
+        this.numberOfProjects = numberOfProjects;
     }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Project } from 'src/app/entities/Project';
 import { ClientService } from 'src/app/services/client.service';
 import { ProjectService } from 'src/app/services/project.service';
@@ -15,7 +16,9 @@ export class ProjectsDisplayComponent implements OnInit{
   username = localStorage.getItem('currentUser');
   projects: Project[] = []; 
 
-  constructor(private clientService: ClientService, private projectService: ProjectService){}
+  constructor(private clientService: ClientService, 
+              private projectService: ProjectService,
+              private router: Router){}
 
   ngOnInit() {    
     this.loadProjects();   
@@ -36,7 +39,7 @@ export class ProjectsDisplayComponent implements OnInit{
 
   //updating project status to completed
   updateCompleted(projectId:number){
-    alert(projectId);
+    //alert(projectId);
     this.projectService.updateCompleted(projectId).subscribe((response) =>{
       console.log(response);
       this.loadProjects();  

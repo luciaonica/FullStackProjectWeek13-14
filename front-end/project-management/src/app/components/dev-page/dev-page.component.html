@@ -5,7 +5,7 @@
 
 <h1>clients</h1>
 
-<div *ngIf="clients.length==0">No clients o display</div>
+<div *ngIf="clients.length==0">No clients to display</div>
 <div class="row">
     <div class="row m-1">
 		<div class="col-sm-4 mt-2" *ngFor="let client of clients">
@@ -13,7 +13,7 @@
             <div class="card-header ">
                 <div class="row">
                     <div class="col">
-                        <a href=""><b>{{client.name}}</b></a>
+                        <a routerLink="/clients/view/{{client.clientId}}"><b>{{client.name}}</b></a>
                     </div>
                     <div class="col">
                         <div class="d-flex justify-content-end">
@@ -26,7 +26,7 @@
                 Registration Date
                 <p>{{client.registerDate | date: 'yyyy-MM-dd'}}</p>
                 No. of projects
-                <p>no. of project</p>
+                <p>{{client.numberOfProjects}}</p>
                 
             </div>
             <div class="card-footer">

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Client } from 'src/app/entities/Client';
+import { Project } from 'src/app/entities/Project';
 import { ClientService } from 'src/app/services/client.service';
 import { ProjectService } from 'src/app/services/project.service';
 

@@ -6,4 +6,5 @@ export interface Client {
     username: string;
     agreement: string;
     registerDate:Date;
+    numberOfProjects:number;
 }

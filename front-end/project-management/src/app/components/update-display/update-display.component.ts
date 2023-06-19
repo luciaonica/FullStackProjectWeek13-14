@@ -34,6 +34,7 @@ export class UpdateDisplayComponent {
       agreement:"",
       email: this.email,
       username: localStorage.getItem('currentUser') as string,
+      numberOfProjects:0,
     }
 
     this.clientService.registerClient(newClient).subscribe((client: any) => {
