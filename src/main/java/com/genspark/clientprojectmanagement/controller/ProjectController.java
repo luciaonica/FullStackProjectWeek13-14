@@ -70,12 +70,12 @@ public class ProjectController {
         projectService.updateProjectStatus(projId, status);
         Project project = projectService.getProjectById(projId);
         Integer clientId = project.getClient().getClientId();
-        sendEmail(request, clientId, status.toString(), Integer.parseInt(projectId));
+        //sendEmail(request, clientId, status.toString(), Integer.parseInt(projectId));
         return "Status updated";
     }
 
     public String sendEmail(HttpServletRequest request, Integer clientId,
-                            @PathVariable(name="status") String status, Integer projectId)
+                            String status, Integer projectId)
             throws MessagingException, UnsupportedEncodingException {
         Client client = clientService.getClientById(clientId);
 
