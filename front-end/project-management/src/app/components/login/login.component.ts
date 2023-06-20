@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
               private authenticationService: AuthService,
               private clientService: ClientService, 
               private projectService: ProjectService,
+              private authService: AuthService,
               private router: Router){
 
   }
@@ -29,7 +30,8 @@ export class LoginComponent implements OnInit {
   }
 
   async onSubmit(){
-    
+    this.authService.deauthenticateClient();
+    this.authService.deauthenticateDev();
     let rawuser = {
       username: this.username,
       password: this.password,

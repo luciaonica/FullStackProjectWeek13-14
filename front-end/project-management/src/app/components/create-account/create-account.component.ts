@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from 'src/app/services/account.service';
 import { User } from 'src/app/entities/User';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
@@ -11,12 +12,14 @@ export class CreateAccountComponent implements OnInit {
   password!: string;
   confirmPassword!: string;
   userCreated!: User;
-  constructor(private accountService: AccountService){}
+  constructor(private accountService: AccountService, private authService: AuthService){}
 
   ngOnInit(): void{
   }
 
   onSubmit(){
+    this.authService.deauthenticateClient();
+    this.authService.deauthenticateDev();
     if(this.password !== this.confirmPassword){
       alert("Passwords do not match. Please try again.")
       return;

@@ -5,7 +5,7 @@ import { Client } from 'src/app/entities/Client';
 import { Project } from 'src/app/entities/Project';
 import { ClientService } from 'src/app/services/client.service';
 import { ProjectService } from 'src/app/services/project.service';
-import { saveAs } from 'file-saver';
+//import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-view-client-info',
@@ -49,9 +49,9 @@ export class ViewClientInfoComponent implements OnInit{
     });   
   }
 
-  downloadFile(filename: string): void {
-    this.clientService.download(this.clientId + "/" + filename)
-    .subscribe(blob => saveAs(blob, filename));
-    console.log("metho download is called " + this.clientId + "/" + filename)
-  }
+  // downloadFile(filename: string): void {
+  //   this.clientService.download(this.clientId + "/" + filename)
+  //   .subscribe(blob => saveAs(blob, filename));
+  //   console.log("metho download is called " + this.clientId + "/" + filename)
+  // }
 }

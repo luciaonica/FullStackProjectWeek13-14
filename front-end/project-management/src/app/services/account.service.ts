@@ -9,6 +9,7 @@ import { Role } from '../entities/Role';
 })
 export class AccountService {
   private userApi = 'http://localhost:8081/api/users'
+  private devApi = 'http://localhost:8081/api/dev';
   private httpOptions  = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -22,7 +23,13 @@ export class AccountService {
     })
     return this.http.post<User>(this.userApi, user, this.httpOptions);
   }
-
+  addDev(user: User): Observable<User>{
+    this.httpOptions.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('authKey') as string
+    })
+    return this.http.post<User>(this.devApi,user, this.httpOptions);
+  }
   getAllUsers(): Observable<User[]> {
     this.httpOptions.headers = new HttpHeaders({
       'Content-Type': 'application/json',

@@ -8,7 +8,7 @@
     <h2>Client Registration Date: "{{client?.registerDate | date: 'yyyy-MM-dd'}}"</h2>
     <div *ngIf="client?.agreement">
         <h2>Client Agreement: "{{client?.agreement}}"</h2>
-        <button (click)="downloadFile(client.agreement)">Open Agreement</button>
+        <!-- <button (click)="downloadFile(client.agreement)">Open Agreement</button> -->
     </div>
     <div *ngIf="projects.length==0">No projects to display</div>
     <div class="row">

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AccountService } from 'src/app/services/account.service';
 import { User } from 'src/app/entities/User';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-update-account',
@@ -15,7 +16,7 @@ export class UpdateAccountComponent {
   confirmNewPassword!: string;
   user!: User;
 
-  constructor(private accountService: AccountService, private router: Router){}
+  constructor(private accountService: AccountService,private authService: AuthService, private router: Router){}
 
   async onSubmit(){
     if(this.currentPassword !== this.confirmCurrentPassword){
@@ -68,6 +69,8 @@ export class UpdateAccountComponent {
           this.confirmCurrentPassword = '';
           this.newPassword = '';
           this.confirmNewPassword = '';
+          this.authService.deauthenticateClient();
+          this.authService.deauthenticateDev();
           this.router.navigate(['login']);
           
         })
