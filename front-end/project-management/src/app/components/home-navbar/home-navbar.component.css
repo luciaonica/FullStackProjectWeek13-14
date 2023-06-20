@@ -7,7 +7,4 @@ li {
     display: inline-block;
     margin-right: 50px;
 }
-.navbar-custom {
-    position:fixed;
-    width: 100%;
-}
+

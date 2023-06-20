@@ -15,10 +15,12 @@ export class ManagementNavBarComponent {
               private clientService: ClientService){}
 
   logout(){
-    this.authenticationService.deauthenticateClient();
-    this.authenticationService.deauthenticateDev();
-    localStorage.clear();
-    this.router.navigate(['']);
+    if(confirm("Are you sure you want to log out? ")){
+      this.authenticationService.deauthenticateClient();
+      this.authenticationService.deauthenticateDev();
+      localStorage.clear();
+      this.router.navigate(['']);
+    }
   }
   currentUser(): string{
     return localStorage.getItem('currentUser') as string;

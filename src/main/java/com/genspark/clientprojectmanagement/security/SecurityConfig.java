@@ -37,10 +37,10 @@ public class SecurityConfig {
                 configurer
                         .requestMatchers(HttpMethod.GET, "/api/users").hasRole("DEVELOPER")
                         .requestMatchers(HttpMethod.GET, "/api/users/{username}").hasRole("DEVELOPER")
-                        .requestMatchers(HttpMethod.PUT, "/api/users/{username}").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/users/{username}").hasRole("CLIENT")
                         .requestMatchers(HttpMethod.DELETE, "/api/users/{username}").hasRole("DEVELOPER")
                         .requestMatchers(HttpMethod.POST, "/api/users").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/dev").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/dev").hasRole("DEVELOPER")
                         .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/admin/clients/**").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/admin/clients/**").permitAll()
