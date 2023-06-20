@@ -10,6 +10,7 @@ export class ClientGuard {
   //got help from https://medium.com/@ryanchenkie_40935/angular-authentication-using-route-guards-bf7a4ca13ae3
   canActivate(route: ActivatedRouteSnapshot, status: RouterStateSnapshot): boolean {
     if(!this.authenticationService.isAuthenticatedClient()){
+      this.authenticationService.deauthenticateDev();
       this.router.navigate(['/login']);
       return false;
     } else {

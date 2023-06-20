@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Client } from 'src/app/entities/Client';
 import { ClientService } from 'src/app/services/client.service';
 import { ProjectService } from 'src/app/services/project.service';
@@ -20,29 +21,40 @@ export class UpdateDisplayComponent {
   fileToUpload: File | null = null;
 
   constructor(private http: HttpClient, private clientService: ClientService,
-              private projectService: ProjectService) { }
+              private projectService: ProjectService, private router: Router) { }
 
   registerClient(){
+    
     if(!this.name){
       alert('Please add a name!');
       return;
     } 
-    const newClient : Client = {
-      name: this.name,
-      address: this.address,
-      registerDate: new Date(),      
-      agreement:"",
-      email: this.email,
-      username: localStorage.getItem('currentUser') as string,
-      numberOfProjects:0,
+    if(!this.email){
+      alert('Please add an email!');
+      return;
+    } 
+    if(!this.address){
+      alert('Please add an email!');
+      return;
+    } 
+    if(confirm("Are you sure you want to submit this as your client info? ")){
+      const newClient : Client = {
+        name: this.name,
+        address: this.address,
+        registerDate: new Date(),      
+        agreement:"",
+        email: this.email,
+        username: localStorage.getItem('currentUser') as string,
+        numberOfProjects:0,
+      }
+  
+      this.clientService.registerClient(newClient).subscribe((client: any) => {
+        localStorage.setItem('clientId', client.clientId);
+        this.projectService.updateClientIdLocal();
+        this.uploadPdf(client.clientId);
+        this.router.navigate(['projects'])
+      })
     }
-
-    this.clientService.registerClient(newClient).subscribe((client: any) => {
-      localStorage.setItem('clientId', client.clientId);
-      this.projectService.updateClientIdLocal();
-      this.uploadPdf(client.clientId);
-    })
-
   }
 
   uploadPdf(clientId:number) {

@@ -31,3 +31,11 @@ h1{
 button {
     margin-right: 20px;
 }
+
+.btn-complete {
+    background: #3d7c59;
+}
+
+.btn-cancel {
+    background: #86203f;
+}

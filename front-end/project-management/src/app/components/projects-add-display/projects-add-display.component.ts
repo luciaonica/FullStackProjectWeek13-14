@@ -31,46 +31,44 @@ export class ProjectsAddDisplayComponent implements OnInit {
 
   onSubmit() {
     if (!this.name) {
-      alert('Please add a username!');
+      alert('Please add a name!');
       return;
     }
-    if (this.clientIdFromURL) {
-      //alert(this.clientIdFromURL);
-      const newProject: Project = {
-        name: this.name,
-        startDate: new Date(),
-        endDate: new Date(),
-        status: "NEW",
-        client: { 'clientId': this.clientIdFromURL, 'name': "", address: "", email: "", username: "", agreement: "", registerDate: new Date(), numberOfProjects: 0 }
-      }
-
-      this.projectService.addProject(newProject).subscribe((result) => {
-        console.log(result);
-      });
-    } else {
-
-      this.clientService.getClientByUsername().subscribe((client: any) => {
-        this.clientId = client.clientId;
+    if(confirm("Are you sure you want to create this project? ")){
+      if (this.clientIdFromURL) {
+        //alert(this.clientIdFromURL);
         const newProject: Project = {
           name: this.name,
           startDate: new Date(),
           endDate: new Date(),
           status: "NEW",
-          client: { 'clientId': this.clientId, 'name': "", address: "", email: "", username: "", agreement: "", registerDate: new Date(), numberOfProjects:0 }
+          client: { 'clientId': this.clientIdFromURL, 'name': "", address: "", email: "", username: "", agreement: "", registerDate: new Date(), numberOfProjects: 0 }
         }
-        console.log(newProject);
-
+  
         this.projectService.addProject(newProject).subscribe((result) => {
           console.log(result);
-          alert('Project added: ' + result);
-          this.router.navigate(['projects']);
         });
-      });
-
+      } else {
+  
+        this.clientService.getClientByUsername().subscribe((client: any) => {
+          this.clientId = client.clientId;
+          const newProject: Project = {
+            name: this.name,
+            startDate: new Date(),
+            endDate: new Date(),
+            status: "NEW",
+            client: { 'clientId': this.clientId, 'name': "", address: "", email: "", username: "", agreement: "", registerDate: new Date(), numberOfProjects:0 }
+          }
+          console.log(newProject);
+  
+          this.projectService.addProject(newProject).subscribe((result) => {
+            console.log(result);
+            alert('Project added succesfully!');
+            this.router.navigate(['projects']);
+          });
+        });
+  
+      }
     }
-
-
   }
-
-
 }

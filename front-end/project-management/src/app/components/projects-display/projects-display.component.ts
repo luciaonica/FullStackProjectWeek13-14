@@ -27,8 +27,7 @@ export class ProjectsDisplayComponent implements OnInit{
 
   ngOnInit() {    
     this.loadProjects();   
-    this.isDev = this.authService.isAuthenticatedDev();
-    //alert(this.isDev);
+    this.isDev = this.authService.isAuthenticatedDev(); 
   }
 
   async loadProjects() {

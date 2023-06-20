@@ -52,7 +52,7 @@ export class UpdateAccountComponent {
     this.accountService.loginCheck(this.user).subscribe((user) => {
       if(user.enabled == false) {
         alert("Current password is incorrect. Please try again.")
-      } else {
+      } else if(confirm("Do you really want to change your password? ")) {
         let userToUpdate: User = {
           username: user.username,
           password: this.newPassword,

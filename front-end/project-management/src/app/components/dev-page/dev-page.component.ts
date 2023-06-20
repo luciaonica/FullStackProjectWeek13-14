@@ -4,6 +4,7 @@ import { Client } from 'src/app/entities/Client';
 import { Project } from 'src/app/entities/Project';
 import { ClientService } from 'src/app/services/client.service';
 import { ProjectService } from 'src/app/services/project.service';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dev-page',
@@ -16,6 +17,7 @@ export class DevPageComponent {
   clientId:number=0;
   
   clients: Client[] = [];  
+  faEdit = faEdit;
 
   constructor(private clientService: ClientService, 
               private projectService: ProjectService,
