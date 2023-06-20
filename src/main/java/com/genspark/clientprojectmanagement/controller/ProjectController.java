@@ -75,7 +75,7 @@ public class ProjectController {
     }
 
     public String sendEmail(HttpServletRequest request, Integer clientId,
-                            @PathVariable(name="status") String status, Integer projectId)
+                            String status, Integer projectId)
             throws MessagingException, UnsupportedEncodingException {
         Client client = clientService.getClientById(clientId);
 

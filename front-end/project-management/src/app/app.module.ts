@@ -23,6 +23,7 @@ import { LicensingComponent } from './components/licensing/licensing.component';
 import { UpdateProjectComponent } from './components/update-project/update-project.component';
 import { ViewClientInfoComponent } from './components/view-client-info/view-client-info.component';
 import { UpdateAccountComponent } from './components/update-account/update-account.component';
+import { UpdateClientComponent } from './components/update-client/update-client.component';
 
 const appRoutes: Routes = [
   {
@@ -72,6 +73,9 @@ const appRoutes: Routes = [
   {
     path: 'account/update', component: UpdateAccountComponent,
     canActivate: [ClientGuard]
+  },
+    path: 'clients/update/:id', component: UpdateClientComponent,
+    canActivate: [ClientGuard]
   }
 ]
 
@@ -94,6 +98,7 @@ const appRoutes: Routes = [
     UpdateProjectComponent,
     ViewClientInfoComponent,
     UpdateAccountComponent
+    UpdateClientComponent
   ],
   imports: [
     BrowserModule,

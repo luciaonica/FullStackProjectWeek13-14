@@ -46,5 +46,13 @@ export class ClientService {
     return this.http.get<Client>(`${this.apiUrl}/admin/clients/${id}`);
   }
   
+  updateClient(client: Client) {
+    console.log(client);
+    return this.http.put(`${this.apiUrl}/admin/clients`, client);
+  }
 
+  download(file:string|undefined): Observable<Blob> {
+    console.log("metho download is called " + `${this.apiUrl}/admin/files/${file}`)
+    return this.http.get(`${this.apiUrl}/admin/files/${file}`, {responseType: 'blob'});
+  }
 }

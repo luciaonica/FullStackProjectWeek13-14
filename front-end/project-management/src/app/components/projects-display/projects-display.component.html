@@ -27,7 +27,7 @@
                     <p>{{project.endDate | date: 'yyyy-MM-dd'}}</p>
                 </div>
                 <div class="card-footer">
-                    <button (click)="project.projectId !== undefined ? updateCompleted(project.projectId) : null">COMPLETE</button>
+                    <button *ngIf="isDev" (click)="project.projectId !== undefined ? updateCompleted(project.projectId) : null">COMPLETE</button>
                     <button (click)="project.projectId !== undefined ? updateCancelled(project.projectId) : null">CANCEL</button>
                 </div>
                 </div>

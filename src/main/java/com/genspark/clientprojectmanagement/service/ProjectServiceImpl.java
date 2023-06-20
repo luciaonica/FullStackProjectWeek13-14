@@ -27,6 +27,7 @@ public class ProjectServiceImpl implements ProjectService{
 
     @Override
     public Project saveProject(Project project) {
+        project.setEndDate(null);
         return projectRepository.save(project);
     }
 

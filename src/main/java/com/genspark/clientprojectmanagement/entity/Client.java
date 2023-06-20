@@ -111,4 +111,18 @@ public class Client {
 
         this.numberOfProjects = numberOfProjects;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "clientId=" + clientId +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", agreement='" + agreement + '\'' +
+                ", registerDate=" + registerDate +
+                ", numberOfProjects=" + numberOfProjects +
+                '}';
+    }
 }

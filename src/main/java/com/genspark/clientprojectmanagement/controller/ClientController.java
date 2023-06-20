@@ -2,17 +2,18 @@ package com.genspark.clientprojectmanagement.controller;
 
 import com.genspark.clientprojectmanagement.entity.Client;
 import com.genspark.clientprojectmanagement.entity.Project;
-import com.genspark.clientprojectmanagement.entity.User;
 import com.genspark.clientprojectmanagement.service.ClientService;
 import com.genspark.clientprojectmanagement.service.FileUploadUtil;
 import com.genspark.clientprojectmanagement.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 
 @RestController
@@ -32,7 +33,7 @@ public class ClientController {
 
     @PutMapping("/clients")
     public Client updateClient(@RequestBody Client client) {
-
+        System.out.println(client.getClientId());
         return clientService.updateClient(client);
     }
 
@@ -85,4 +86,5 @@ public class ClientController {
     public Client getClientByUsername(@PathVariable String username) {
         return clientService.getClientByUsername(username);
     }
+
 }

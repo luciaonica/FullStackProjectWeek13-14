@@ -1,9 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from 'src/app/entities/Client';
 import { Project } from 'src/app/entities/Project';
 import { ClientService } from 'src/app/services/client.service';
 import { ProjectService } from 'src/app/services/project.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-view-client-info',
@@ -18,7 +20,8 @@ export class ViewClientInfoComponent implements OnInit{
   constructor(private clientService: ClientService, 
               private projectService: ProjectService,
               private route: ActivatedRoute,
-              private router: Router){}
+              private router: Router,
+              private http: HttpClient){}
 
   ngOnInit() {
     this.clientId = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
@@ -44,5 +47,11 @@ export class ViewClientInfoComponent implements OnInit{
       //refresh the page
       this.projectService.projectList(this.clientId).subscribe((projects) => this.projects = projects);    
     });   
+  }
+
+  downloadFile(filename: string): void {
+    this.clientService.download(this.clientId + "/" + filename)
+    .subscribe(blob => saveAs(blob, filename));
+    console.log("metho download is called " + this.clientId + "/" + filename)
   }
 }

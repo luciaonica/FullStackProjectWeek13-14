@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Project } from 'src/app/entities/Project';
+import { AuthService } from 'src/app/services/auth.service';
 import { ClientService } from 'src/app/services/client.service';
 import { ProjectService } from 'src/app/services/project.service';
 
@@ -15,13 +16,17 @@ export class ProjectsDisplayComponent implements OnInit{
   //username = "kjk";
   username = localStorage.getItem('currentUser');
   projects: Project[] = []; 
+  isDev:boolean = false;
 
   constructor(private clientService: ClientService, 
               private projectService: ProjectService,
-              private router: Router){}
+              private router: Router,
+              private authService: AuthService){}
 
   ngOnInit() {    
     this.loadProjects();   
+    this.isDev = this.authService.isAuthenticatedDev();
+    alert(this.isDev);
   }
 
   async loadProjects() {
