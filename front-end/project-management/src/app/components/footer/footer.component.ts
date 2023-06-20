@@ -9,4 +9,7 @@ export class FooterComponent {
   goToGithub(){
     window.open('https://github.com/luciaonica/FullStackProjectWeek13-14/tree/master', "_blank");
   }
+  goToLicensing(){
+    window.open('licensing', "_blank");
+  }
 }

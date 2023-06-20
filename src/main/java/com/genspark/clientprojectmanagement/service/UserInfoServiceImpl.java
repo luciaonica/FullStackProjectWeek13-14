@@ -94,6 +94,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 //        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
 //                authorities);
 //    }
+
     //code was gotten from tutorials in https://www.udemy.com/course/spring-hibernate-tutorial
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
@@ -109,5 +110,11 @@ public class UserInfoServiceImpl implements UserInfoService {
     //code was gotten from tutorials in https://www.udemy.com/course/spring-hibernate-tutorial
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
+    }
+
+    @Override
+    public User updatePassword(User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return this.userDao.updatePassword(user);
     }
 }

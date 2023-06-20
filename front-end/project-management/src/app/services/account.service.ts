@@ -17,19 +17,34 @@ export class AccountService {
   constructor(private http:HttpClient) { }
 
   addUser(user: User): Observable<User>{
+    this.httpOptions.headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
     return this.http.post<User>(this.userApi, user, this.httpOptions);
   }
 
   getAllUsers(): Observable<User[]> {
     this.httpOptions.headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': sessionStorage.getItem('authKey') as string
+      'Authorization': localStorage.getItem('authKey') as string
     })
     return this.http.get<User[]>(this.userApi, this.httpOptions);
   }
 
   loginCheck(user: User): Observable<User> {
+    this.httpOptions.headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
     const url = `${this.userApi}/login`;
     return this.http.post<User>(url,user, this.httpOptions);
+  }
+
+  updateUser(user: User): Observable<User> {
+    this.httpOptions.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('authKey') as string
+    })
+    const url = `${this.userApi}/${localStorage.getItem('currentUser') as string}`;
+    return this.http.put<User>(url,user,this.httpOptions);
   }
 }

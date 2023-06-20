@@ -11,4 +11,6 @@ public interface UserDao {
     List<User> getAllUsers();
 
     void deleteByUsername(String userName);
+
+    User updatePassword(User user);
 }

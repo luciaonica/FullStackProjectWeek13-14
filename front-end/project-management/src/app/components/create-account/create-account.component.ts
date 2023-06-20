@@ -43,5 +43,6 @@ export class CreateAccountComponent implements OnInit {
     alert('Account succesfully created. Please use the login tab for logging into the application. If it does not work please try registering a different username.');
     this.username = '';
     this.password = '';
+    this.confirmPassword = '';
   }
 }

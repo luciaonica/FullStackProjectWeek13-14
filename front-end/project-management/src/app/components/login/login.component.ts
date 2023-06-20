@@ -29,22 +29,26 @@ export class LoginComponent implements OnInit {
   }
 
   async onSubmit(){
-
-    this.user = {
+    
+    let rawuser = {
       username: this.username,
       password: this.password,
       enabled: true,
       roles: []
     };
-    localStorage.setItem('authKey', 'Basic ' + btoa(`${this.user.username}:${this.user.password}`));
     //add localstorage.clear when user press logout
-    localStorage.setItem('currentUser', this.user.username);
-    this.accountService.loginCheck(this.user).subscribe((user) => {
+    localStorage.setItem('currentUser', rawuser.username);
+    this.accountService.loginCheck(rawuser).subscribe((user) => {
       this.user = user;
       let isDev:boolean = false;
       if(this.user.enabled == false) {
         alert("Account not enabled or details are wrong, please try again.")
+        this.username = '';
+        this.password = '';
       } else {
+        this.username = '';
+        this.password = '';
+        localStorage.setItem('authKey', 'Basic ' + btoa(`${rawuser.username}:${rawuser.password}`));
         this.user.roles.forEach((role: Role) => {
           if(role.name === 'ROLE_DEVELOPER'){
             isDev = true;
@@ -80,7 +84,7 @@ export class LoginComponent implements OnInit {
             }
           }
           )
-        }       
+        } 
       }
     })
   }

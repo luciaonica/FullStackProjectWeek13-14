@@ -29,7 +29,7 @@ public class UserDaoImpl implements UserDao{
             System.out.println(user);
             return user;
         } catch (Exception e){
-            return null;
+            return new User();
         }
     }
 
@@ -69,5 +69,15 @@ public class UserDaoImpl implements UserDao{
                 .setParameter(1, username)
                 .executeUpdate();
 
+    }
+
+    @Override
+    @Transactional
+    public User updatePassword(User user) {
+        entityManager.createNativeQuery("UPDATE user SET password = ? WHERE username = ?")
+                .setParameter(1, user.getPassword())
+                .setParameter(2, user.getUsername())
+                .executeUpdate();
+        return findByUsername(user.getUsername());
     }
 }

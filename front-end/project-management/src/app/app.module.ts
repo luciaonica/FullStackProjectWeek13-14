@@ -23,6 +23,8 @@ import { LicensingComponent } from './components/licensing/licensing.component';
 import { UpdateProjectComponent } from './components/update-project/update-project.component';
 import { ViewClientInfoComponent } from './components/view-client-info/view-client-info.component';
 import { UpdateClientComponent } from './components/update-client/update-client.component';
+import { UpdateAccountComponent } from './components/update-account/update-account.component';
+
 
 const appRoutes: Routes = [
   {
@@ -73,6 +75,11 @@ const appRoutes: Routes = [
     path: 'clients/update/:id', component: UpdateClientComponent,
     canActivate: [ClientGuard]
   },
+  {
+    path: 'account/update', component: UpdateAccountComponent,
+    canActivate: [ClientGuard]
+  }
+
 ]
 
 @NgModule({
@@ -93,7 +100,11 @@ const appRoutes: Routes = [
     LicensingComponent,
     UpdateProjectComponent,
     ViewClientInfoComponent,
+<<<<<<< HEAD
     UpdateClientComponent
+=======
+    UpdateAccountComponent
+>>>>>>> origin/luis-branch
   ],
   imports: [
     BrowserModule,

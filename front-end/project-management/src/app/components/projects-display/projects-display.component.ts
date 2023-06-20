@@ -47,9 +47,9 @@ export class ProjectsDisplayComponent implements OnInit{
     //alert(projectId);
     this.projectService.updateCompleted(projectId).subscribe((response) =>{
       console.log(response);
-      alert('Project status updated! An email was sent to you!');
-      this.loadProjects();
-    });    
+      this.loadProjects();  
+    });
+        
   }
 
   //updating project status to cancelled
@@ -57,7 +57,6 @@ export class ProjectsDisplayComponent implements OnInit{
     console.log(projectId);
     this.projectService.updateCancelled(projectId).subscribe((response) => {
       console.log(response);
-      alert('Project status updated! An email was sent to you!');
       this.loadProjects();
     });   
   }

@@ -16,5 +16,5 @@ public interface UserInfoService extends UserDetailsService {
 
     List<User> deleteByUsername(String username);
 
-
+    User updatePassword(User user);
 }
