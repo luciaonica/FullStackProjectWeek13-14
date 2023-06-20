@@ -29,6 +29,14 @@ export class UpdateDisplayComponent {
       alert('Please add a name!');
       return;
     } 
+    if(!this.email){
+      alert('Please add an email!');
+      return;
+    } 
+    if(!this.address){
+      alert('Please add an email!');
+      return;
+    } 
     if(confirm("Are you sure you want to submit this as your client info? ")){
       const newClient : Client = {
         name: this.name,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from 'src/app/entities/Client';
 import { ClientService } from 'src/app/services/client.service';
 
@@ -14,7 +14,8 @@ export class UpdateClientComponent implements OnInit{
   selectedFileName?: string | null;
 
   constructor(private route: ActivatedRoute, 
-              private clientService: ClientService) { }
+              private clientService: ClientService,
+              private router: Router) { }
 
   ngOnInit(): void {
     let clientId = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
@@ -32,22 +33,28 @@ export class UpdateClientComponent implements OnInit{
 
  
 
-  updateClient() {
+  async updateClient() {
     // Add any necessary validation for the form fields
     //this.client.agreement='';
-    this.clientService.updateClient(this.client).subscribe(
-      (response: any) => {
-        // Handle success response
-        console.log('Update success:', response);
-        // Perform any additional actions (e.g., show success message, redirect)
-      },
-      (error: any) => {
-        // Handle error response
-        console.error('Update error:', error);
-        // Perform any additional error handling (e.g., show error message)
-      }
-    );
-    this.client.clientId && this.uploadPdf(this.client.clientId);
+    if(confirm("Are you sure you want to update the client info?")){
+      this.clientService.updateClient(this.client).subscribe(
+        (response: any) => {
+          // Handle success response
+          console.log('Update success:', response);
+          // Perform any additional actions (e.g., show success message, redirect)
+        },
+        (error: any) => {
+          // Handle error response
+          console.error('Update error:', error);
+          // Perform any additional error handling (e.g., show error message)
+        }
+      );
+      this.client.clientId && this.uploadPdf(this.client.clientId);
+      alert("Client information updated!");
+      this.router.navigate(['dev']);
+    }
+
+    
   }
 
   uploadPdf(clientId:number) {
