@@ -22,6 +22,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LicensingComponent } from './components/licensing/licensing.component';
 import { UpdateProjectComponent } from './components/update-project/update-project.component';
 import { ViewClientInfoComponent } from './components/view-client-info/view-client-info.component';
+import { UpdateClientComponent } from './components/update-client/update-client.component';
 
 const appRoutes: Routes = [
   {
@@ -68,6 +69,10 @@ const appRoutes: Routes = [
     path: 'clients/view/:id', component: ViewClientInfoComponent,
     canActivate: [ClientGuard]
   },
+  {
+    path: 'clients/update/:id', component: UpdateClientComponent,
+    canActivate: [ClientGuard]
+  },
 ]
 
 @NgModule({
@@ -87,7 +92,8 @@ const appRoutes: Routes = [
     FooterComponent,
     LicensingComponent,
     UpdateProjectComponent,
-    ViewClientInfoComponent
+    ViewClientInfoComponent,
+    UpdateClientComponent
   ],
   imports: [
     BrowserModule,

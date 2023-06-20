@@ -40,6 +40,7 @@ export class ProjectService {
   }
 
   updateProject(project: Project) {
+    console.log(project)
     return this.http.put(`${this.apiUrl}/admin/projects`, project);
   }
 }
