@@ -13,7 +13,7 @@
                         </div>
                         <div class="col">
                             <div class="d-flex justify-content-end">
-                                <b><a routerLink="/projects/update/{{project.projectId}}">update project</a></b>
+                                <a routerLink="/projects/update/{{project.projectId}}" title="Update this project"><fa-icon [icon]="faEdit" size="2x"></fa-icon></a>
                             </div>
                         </div>
                     </div>
@@ -27,8 +27,8 @@
                     <p>{{project.endDate | date: 'yyyy-MM-dd'}}</p>
                 </div>
                 <div class="card-footer">
-                    <button *ngIf="isDev" (click)="project.projectId !== undefined ? updateCompleted(project.projectId) : null">COMPLETE</button>
-                    <button (click)="project.projectId !== undefined ? updateCancelled(project.projectId) : null">CANCEL</button>
+                    <button class="btn-complete" *ngIf="isDev" (click)="project.projectId !== undefined ? updateCompleted(project.projectId) : null" title="Camplete this project">COMPLETE</button>
+                    <button class="btn-cancel" (click)="project.projectId !== undefined ? updateCancelled(project.projectId) : null" title="Cancel this project">CANCEL</button>
                 </div>
                 </div>
             </div>

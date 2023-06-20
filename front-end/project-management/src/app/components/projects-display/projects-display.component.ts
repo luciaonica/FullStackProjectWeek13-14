@@ -4,6 +4,7 @@ import { Project } from 'src/app/entities/Project';
 import { AuthService } from 'src/app/services/auth.service';
 import { ClientService } from 'src/app/services/client.service';
 import { ProjectService } from 'src/app/services/project.service';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-projects-display',
@@ -17,6 +18,7 @@ export class ProjectsDisplayComponent implements OnInit{
   username = localStorage.getItem('currentUser');
   projects: Project[] = []; 
   isDev:boolean = false;
+  faEdit = faEdit;
 
   constructor(private clientService: ClientService, 
               private projectService: ProjectService,
@@ -26,7 +28,7 @@ export class ProjectsDisplayComponent implements OnInit{
   ngOnInit() {    
     this.loadProjects();   
     this.isDev = this.authService.isAuthenticatedDev();
-    alert(this.isDev);
+    //alert(this.isDev);
   }
 
   async loadProjects() {

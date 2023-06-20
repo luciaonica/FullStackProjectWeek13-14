@@ -25,6 +25,7 @@ import { ViewClientInfoComponent } from './components/view-client-info/view-clie
 import { UpdateAccountComponent } from './components/update-account/update-account.component';
 import { UpdateClientComponent } from './components/update-client/update-client.component';
 import { CreateDevComponent } from './components/create-dev/create-dev.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const appRoutes: Routes = [
   {
@@ -112,7 +113,8 @@ const appRoutes: Routes = [
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes, {enableTracing: true})
+    RouterModule.forRoot(appRoutes, {enableTracing: true}),
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
