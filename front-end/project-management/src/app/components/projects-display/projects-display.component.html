@@ -5,7 +5,7 @@
     <div class="row">
         <div class="row m-1">
             <div class="col-sm-4 mt-2" *ngFor="let project of projects">
-                <div class="card">
+                <div class="card text-bg-light">
                 <div class="card-header ">
                     <div class="row">
                         <div class="col">
@@ -27,12 +27,49 @@
                     <p>{{project.endDate | date: 'yyyy-MM-dd'}}</p>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-success" *ngIf="isDev" (click)="project.projectId !== undefined ? updateCompleted(project.projectId) : null" title="Camplete this project">COMPLETE</button>
-                    <button class="btn btn-danger" (click)="project.projectId !== undefined ? updateCancelled(project.projectId) : null" title="Cancel this project">CANCEL</button>
+                    <button class="btn-complete" *ngIf="isDev" (click)="project.projectId !== undefined ? updateCompleted(project.projectId) : null" title="Camplete this project">COMPLETE</button>
+                    <button class="btn-cancel" (click)="project.projectId !== undefined ? updateCancelled(project.projectId) : null" title="Cancel this project">CANCEL</button>
                 </div>
                 </div>
+
+                <div class="modal" id="completeModal">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Warning</h4>
+                          <button type="button" class="btn-close" (click)="closeCompleteModal()" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                         Are you sure you want to change the status to Complete?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" (click)="modalProjectId !== undefined ? updateCompleteConfirm(modalProjectId) : null" data-bs-dismiss="modal">Ok</button>
+                            <button type="button" class="btn btn-danger" (click)="closeCompleteModal()" data-bs-dismiss="modal">Close</button>
+                        </div>  
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="modal" id="cancelModal">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Warning</h4>
+                          <button type="button" class="btn-close" (click)="closeCancelModal()" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                         Are you sure you want to change the status to Cancel?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" (click)="modalProjectId !== undefined ? updateCancelledConfirm(modalProjectId) : null" data-bs-dismiss="modal">Ok</button>
+                            <button type="button" class="btn btn-danger" (click)="closeCancelModal()" data-bs-dismiss="modal">Close</button>
+                        </div>  
+                      </div>
+                    </div>
+                  </div>
             </div>
         </div>
     </div>
 </div>
+
 

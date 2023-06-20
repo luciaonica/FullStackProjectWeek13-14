@@ -19,6 +19,7 @@ export class ProjectsDisplayComponent implements OnInit{
   projects: Project[] = []; 
   isDev:boolean = false;
   faEdit = faEdit;
+  modalProjectId: number | undefined;
 
   constructor(private clientService: ClientService, 
               private projectService: ProjectService,
@@ -45,21 +46,56 @@ export class ProjectsDisplayComponent implements OnInit{
 
   //updating project status to completed
   updateCompleted(projectId:number){
-    //alert(projectId);
+    this.openCompleteModal(projectId);
+  }
+
+  updateCompleteConfirm(projectId:number) {
     this.projectService.updateCompleted(projectId).subscribe((response) =>{
       console.log(response);
       this.loadProjects();  
     });
-        
   }
 
   //updating project status to cancelled
   updateCancelled(projectId:number){
-    console.log(projectId);
+    this.openCancelModal(projectId); 
+  }
+
+  updateCancelledConfirm(projectId:number){
     this.projectService.updateCancelled(projectId).subscribe((response) => {
       console.log(response);
       this.loadProjects();
     });   
+  }
+
+  openCompleteModal(projectId: number) {
+    this.modalProjectId = projectId;
+    const modelDiv = document.getElementById('completeModal');
+    if (modelDiv != null){
+      modelDiv.style.display = 'block';
+    }   
+  }
+
+  closeCompleteModal() {
+    const modelDiv = document.getElementById('completeModal');
+    if (modelDiv != null){
+      modelDiv.style.display = 'none';
+    }   
+  }
+
+  openCancelModal(projectId: number) {
+    this.modalProjectId = projectId; 
+    const modelDiv = document.getElementById('cancelModal');
+    if (modelDiv != null){
+      modelDiv.style.display = 'block';
+    }   
+  }
+
+  closeCancelModal() {
+    const modelDiv = document.getElementById('cancelModal');
+    if (modelDiv != null){
+      modelDiv.style.display = 'none';
+    }   
   }
 
 }

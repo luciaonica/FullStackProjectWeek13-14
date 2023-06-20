@@ -8,14 +8,14 @@
 <div class="row">
     <div class="row m-1">
 		<div class="col-sm-4 mt-2" *ngFor="let client of clients">
-            <div class="card">
+            <div class="card text-bg-light">
             <div class="card-header ">
                 <div class="row">
                     <div class="col">
                         <a routerLink="/clients/view/{{client.clientId}}" title="View client details"><b>{{client.name}}</b></a>
                     </div>
                     <div class="col">
-                        <div class="d-flex justify-content-end">
+                        <div class="d-flex justify-content-end">                            
                             <a routerLink="/clients/update/{{client.clientId}}" title="Update this client"><fa-icon [icon]="faEdit" size="2x"></fa-icon></a>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                 
             </div>
             <div class="card-footer">
-                <button (click)="client.clientId !== undefined ? addProjectAsDev(client.clientId) : null">Add Project</button>
+                <button class="btn" (click)="client.clientId !== undefined ? addProjectAsDev(client.clientId) : null" title="Add a new Project">Add Project</button>
                 </div>
             </div>
         </div>
