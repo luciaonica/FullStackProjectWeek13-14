@@ -28,7 +28,7 @@ export class ClientService {
   uploadPdf(clientId: number, fileToUpload: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
-    return this.http.post(`http://localhost:8081/admin/clients/upload/${clientId}`, formData, {
+    return this.http.post(`${this.apiUrl}/admin/clients/upload/${clientId}`, formData, {
       responseType: 'text'
     });
   }
