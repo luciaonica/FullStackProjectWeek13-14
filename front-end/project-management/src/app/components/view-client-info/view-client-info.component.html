@@ -58,8 +58,8 @@
                     <p>{{project.endDate | date: 'yyyy-MM-dd'}}</p>
                 </div>
                 <div class="card-footer">
-                    <button class="btn-complete" (click)="project.projectId !== undefined ? updateCompleted(project.projectId) : null" title="Complete this Project">COMPLETE</button>
-                    <button class="btn-cancel" (click)="project.projectId !== undefined ? updateCancelled(project.projectId) : null" title="Complete this Project">CANCEL</button>
+                    <button class="btn-complete" title="Complete this Project" (click)="project.projectId !== undefined ? updateCompleted(project.projectId) : null">COMPLETE</button>
+                    <button class="btn-cancel" title="Cancel this Project"(click)="project.projectId !== undefined ? updateCancelled(project.projectId) : null">CANCEL</button>
                 </div>
                 </div>
 
