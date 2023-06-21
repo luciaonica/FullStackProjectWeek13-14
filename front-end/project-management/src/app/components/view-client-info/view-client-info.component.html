@@ -1,17 +1,37 @@
 <app-management-nav-bar></app-management-nav-bar>
 <div class="container">
-    <h2>Client Info"</h2>
-    <p>Client ID: {{clientId}}</p>
-    <p>Client Name: "{{client?.name}}"</p>
-    <p>Client Address: "{{client?.address}}"</p>
-    <p>Client Email: "{{client?.email}}"</p>
-    <p>Client Registration Date: "{{client?.registerDate | date: 'yyyy-MM-dd'}}"</p>
-    
-    <div *ngIf="client?.agreement">
-        <p>Client Agreement: "{{client?.agreement}}"</p>
-        
+  <div class="card info" style="width: 36rem;">
+    <div class="card-body">
+      <h5 class="card-title">Client Info</h5>
+      <div class="row">
+        <div class="col-5">Client ID:</div>
+        <div class="col-7">{{clientId}}</div>
+      </div>
+      <div class="row">
+        <div class="col-5">Client Name:</div>
+        <div class="col-7">{{client?.name}}</div>
+      </div>
+      <div class="row">
+        <div class="col-5">Client Address:</div>
+        <div class="col-7">{{client?.address}}</div>
+      </div>
+      <div class="row">
+        <div class="col-5">Client Email:</div>
+        <div class="col-7">{{client?.email}}</div>
+      </div>
+      <div class="row">
+        <div class="col-5">Registration Date:</div>
+        <div class="col-7">{{client?.registerDate | date: 'yyyy-MM-dd'}}</div>
+      </div>
+      <div *ngIf="client?.agreement" class="row">
+        <div class="col-5">Client Agreement:</div>
+        <div class="col-7">{{client?.agreement}}</div>
+        <button class="btn-open">Open Agreement</button>        
         <!-- <button (click)="downloadFile(client.agreement)">Open Agreement</button> -->
+      </div>      
     </div>
+  </div>
+
     <div *ngIf="projects.length==0">No projects to display</div>
     <div class="row">
         <div class="row m-1">
