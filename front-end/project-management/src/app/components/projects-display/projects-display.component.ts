@@ -4,6 +4,7 @@ import { Project } from 'src/app/entities/Project';
 import { AuthService } from 'src/app/services/auth.service';
 import { ClientService } from 'src/app/services/client.service';
 import { ProjectService } from 'src/app/services/project.service';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-projects-display',
@@ -17,6 +18,8 @@ export class ProjectsDisplayComponent implements OnInit{
   username = localStorage.getItem('currentUser');
   projects: Project[] = []; 
   isDev:boolean = false;
+  faEdit = faEdit;
+  modalProjectId: number | undefined;
 
   constructor(private clientService: ClientService, 
               private projectService: ProjectService,
@@ -25,8 +28,7 @@ export class ProjectsDisplayComponent implements OnInit{
 
   ngOnInit() {    
     this.loadProjects();   
-    // this.isDev = this.authService.isAuthenticatedDev();
-    // alert(this.isDev);
+    this.isDev = this.authService.isAuthenticatedDev(); 
   }
 
   async loadProjects() {
@@ -44,21 +46,56 @@ export class ProjectsDisplayComponent implements OnInit{
 
   //updating project status to completed
   updateCompleted(projectId:number){
-    //alert(projectId);
+    this.openCompleteModal(projectId);
+  }
+
+  updateCompleteConfirm(projectId:number) {
     this.projectService.updateCompleted(projectId).subscribe((response) =>{
       console.log(response);
       this.loadProjects();  
     });
-        
   }
 
   //updating project status to cancelled
   updateCancelled(projectId:number){
-    console.log(projectId);
+    this.openCancelModal(projectId); 
+  }
+
+  updateCancelledConfirm(projectId:number){
     this.projectService.updateCancelled(projectId).subscribe((response) => {
       console.log(response);
       this.loadProjects();
     });   
+  }
+
+  openCompleteModal(projectId: number) {
+    this.modalProjectId = projectId;
+    const modelDiv = document.getElementById('completeModal');
+    if (modelDiv != null){
+      modelDiv.style.display = 'block';
+    }   
+  }
+
+  closeCompleteModal() {
+    const modelDiv = document.getElementById('completeModal');
+    if (modelDiv != null){
+      modelDiv.style.display = 'none';
+    }   
+  }
+
+  openCancelModal(projectId: number) {
+    this.modalProjectId = projectId; 
+    const modelDiv = document.getElementById('cancelModal');
+    if (modelDiv != null){
+      modelDiv.style.display = 'block';
+    }   
+  }
+
+  closeCancelModal() {
+    const modelDiv = document.getElementById('cancelModal');
+    if (modelDiv != null){
+      modelDiv.style.display = 'none';
+    }   
   }
 
 }
