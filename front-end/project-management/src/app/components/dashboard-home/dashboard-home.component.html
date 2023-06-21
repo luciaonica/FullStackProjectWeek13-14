@@ -1,26 +1,62 @@
 <app-management-nav-bar></app-management-nav-bar>
 
 <!-- Header-->
-<!-- <header class="">
+<header class="">
     <div class="container px-4 text-center mt-4 p-5">
-        <h1 class="fw-bolder">Welcome to the Client App</h1>
+        <h1 class="fw-bolder">Welcome to the Client Management App</h1>
     </div>
-</header> -->
+</header>
 <!-- About section-->
-<!-- <section id="about">
-    <div class="container px-4">
+<section id="about">
+    <div class="container px-4 mb-5">
         <div class="row gx-4 justify-content-center">
             <div class="col-lg-8">
-                <h2>About this page</h2>
-                <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
+                <h2 class="mb-4">About this application</h2>
+                <p class="lead">Navigate through the navigation bar</p>
                 <ul>
-                    <li>Clickable nav links that smooth scroll to page sections</li>
-                    <li>Responsive behavior when clicking nav links perfect for a one page website</li>
-                    <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
-                    <li>Minimal custom CSS so you are free to explore your own unique design options</li>
+                    <li>Features a navigation bar at the top that allows for you to move between each component</li>
+                </ul>
+                <p class="lead">Home</p>
+                <ul>
+                    <li>Returns to this page.</li>
+                </ul>
+                <p class="lead">Projects</p>
+                <ul>
+                    <li>Look and manage your projects.</li>
+                    <li>You can cancel them by pressing the cancel button.</li>
+                </ul>
+                <p class="lead">Add project</p>
+                <ul>
+                    <li>Add a project based on name.</li>
+                    <li>Can manage it through the projects tab.</li>
+                </ul>
+                <p *ngIf="showDevTab()" class="lead">Clients</p>
+                <ul>
+                    <li>Only visible to developer users.</li>
+                    <li>Allows for you to see the registered clients and their projects when clicking the client name.</li>
+                    <li>Allows to mark them as completed.</li>
+                    <li>Allows for you to update the client information.</li>
+                    <li>Allows to add projects to each user. </li>
+                </ul>
+                <p class="lead">Add client information</p>
+                <ul>
+                    <li>Insert your personal information in the add client information tab to start using the app.</li>
+                    <li>Personal information includes your name, email, address, and an agreement PDF file.</li>
+                    <li>Can only do it once, option disappears after submitting.</li>
+                    <li>Other nav bar items appear after submitting this form.</li>
+                </ul>
+                <p class="lead">Update account information</p>
+                <ul>
+                    <li>Allows for you to update your password.</li>
+                    <li>Immediately logs out after updating the password.</li>
+                </ul>
+                <p *ngIf="showDevTab()" class="lead">Create dev account</p>
+                <ul>
+                    <li>Only visible to developer users.</li>
+                    <li>Allows for you to create more developer accounts.</li>
                 </ul>
             </div>
         </div>
     </div>
-    </section> -->
+    </section>
 

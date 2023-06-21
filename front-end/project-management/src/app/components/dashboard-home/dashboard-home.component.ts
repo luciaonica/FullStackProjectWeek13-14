@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class DashboardHomeComponent {
 
+  constructor(private authService:AuthService){}
+
+  showDevTab(){
+    return this.authService.isAuthenticatedDev();
+  }
 }
