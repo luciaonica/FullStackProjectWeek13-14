@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AccountService } from 'src/app/services/account.service';
 import { User } from 'src/app/entities/User';
 import { Role } from 'src/app/entities/Role';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-dev',
   templateUrl: './create-dev.component.html',
@@ -13,7 +14,8 @@ export class CreateDevComponent {
   confirmPassword!: string;
   devCreated!: User;
 
-  constructor(private accountService: AccountService){}
+  constructor(private accountService: AccountService,
+              private router: Router){}
 
   onSubmit(){
     if(this.password !== this.confirmPassword){
@@ -38,10 +40,14 @@ export class CreateDevComponent {
       enabled: true,
       roles: [{'id':1,'name': "ROLE_DEVELOPER"},{'id':2,'name': "ROLE_CLIENT"}] 
     }
-    this.accountService.addDev(newDev).subscribe((user: User) => (this.devCreated = user));
-    alert('Developer account succesfully created. Please use the login tab for logging with this developer. If it does not work please try registering a different username.');
-    this.username = '';
-    this.password = '';
-    this.confirmPassword = '';
+    this.accountService.addDev(newDev).subscribe((user: User) => {
+      this.devCreated = user;
+      alert('Developer account succesfully created. Please use the login tab for logging with this developer. If it does not work please try registering a different username.');
+      this.username = '';
+      this.password = '';
+      this.confirmPassword = '';
+      this.router.navigate(['dashboard'])
+    });
+
   }
 }

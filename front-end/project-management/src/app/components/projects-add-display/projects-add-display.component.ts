@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Project } from 'src/app/entities/Project';
@@ -19,7 +20,8 @@ export class ProjectsAddDisplayComponent implements OnInit {
   constructor(private projectService: ProjectService,
     private clientService: ClientService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private location:Location) { }
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe(params => {
@@ -47,6 +49,8 @@ export class ProjectsAddDisplayComponent implements OnInit {
   
         this.projectService.addProject(newProject).subscribe((result) => {
           console.log(result);
+          alert('Project added succesfully!');
+          this.location.back();
         });
       } else {
   
@@ -64,7 +68,7 @@ export class ProjectsAddDisplayComponent implements OnInit {
           this.projectService.addProject(newProject).subscribe((result) => {
             console.log(result);
             alert('Project added succesfully!');
-            this.router.navigate(['projects']);
+            this.location.back();
           });
         });
   
