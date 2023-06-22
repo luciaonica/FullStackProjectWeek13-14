@@ -45,11 +45,7 @@ export class ProjectsDisplayComponent implements OnInit{
   } 
 
   //updating project status to completed
-  updateCompleted(projectId:number){
-    this.openCompleteModal(projectId);
-  }
-
-  updateCompleteConfirm(projectId:number) {
+  updateComplete(projectId:number) {
     this.projectService.updateCompleted(projectId).subscribe((response) =>{
       console.log(response);
       this.loadProjects();  
@@ -58,10 +54,6 @@ export class ProjectsDisplayComponent implements OnInit{
 
   //updating project status to cancelled
   updateCancelled(projectId:number){
-    this.openCancelModal(projectId); 
-  }
-
-  updateCancelledConfirm(projectId:number){
     this.projectService.updateCancelled(projectId).subscribe((response) => {
       console.log(response);
       this.loadProjects();

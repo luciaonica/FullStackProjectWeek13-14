@@ -58,8 +58,14 @@
                     <p>{{project.endDate | date: 'yyyy-MM-dd'}}</p>
                 </div>
                 <div class="card-footer">
-                    <button class="btn-complete" title="Complete this Project" (click)="project.projectId !== undefined ? updateCompleted(project.projectId) : null">COMPLETE</button>
-                    <button class="btn-cancel" title="Cancel this Project"(click)="project.projectId !== undefined ? updateCancelled(project.projectId) : null">CANCEL</button>
+                    <button class="btn-complete" title="Complete this Project" 
+                      [disabled]="project.status==='COMPLETED'"
+                      (click)="project.projectId !== undefined ? openCompleteModal(project.projectId) : null"
+                      >COMPLETE</button>
+                    <button class="btn-cancel" title="Cancel this Project"
+                      [disabled]="project.status==='CANCELLED'"
+                      (click)="project.projectId !== undefined ? openCancelModal(project.projectId) : null"
+                      >CANCEL</button>
                 </div>
                 </div>
 
@@ -74,7 +80,7 @@
                          Are you sure you want to change the status to Complete?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" (click)="modalProjectId !== undefined ? updateCompleteConfirm(modalProjectId) : null" data-bs-dismiss="modal">Ok</button>
+                            <button type="button" class="btn btn-success" (click)="modalProjectId !== undefined ? updateComplete(modalProjectId) : null" data-bs-dismiss="modal">Ok</button>
                             <button type="button" class="btn btn-danger" (click)="closeCompleteModal()" data-bs-dismiss="modal">Close</button>
                         </div>  
                       </div>
@@ -92,7 +98,7 @@
                          Are you sure you want to change the status to Cancel?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" (click)="modalProjectId !== undefined ? updateCancelledConfirm(modalProjectId) : null" data-bs-dismiss="modal">Ok</button>
+                            <button type="button" class="btn btn-success" (click)="modalProjectId !== undefined ? updateCancelled(modalProjectId) : null" data-bs-dismiss="modal">Ok</button>
                             <button type="button" class="btn btn-danger" (click)="closeCancelModal()" data-bs-dismiss="modal">Close</button>
                         </div>  
                       </div>
